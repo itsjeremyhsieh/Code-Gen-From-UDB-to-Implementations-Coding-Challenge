@@ -37,7 +37,7 @@ Modify the `#include "<input_header_file>"` directive to reference the desired h
 
 ```
 gcc -o c_to_yamlemit_yaml.c
-./c_to_yaml<input_header_file.h> <output_yaml_file.yaml>
+./c_to_yaml <output_yaml_file.yaml>
 ```
 
 ---
@@ -59,7 +59,7 @@ In the C file, remove existing #include that include header files , and replace 
 In terminal, run:
 ```bash
 gcc -o c_to_yaml c_to_yaml.c
-./c_to_yaml sample_output/fcvt.d.q.h sample_input/output.yaml
+./c_to_yaml sample_input/output.yaml
 ```
 
 - The resulting `output.yaml` file will be saved under the `sample_input/` folder.
@@ -75,7 +75,7 @@ In the C file, we once again modify the header file include:
 
 In the terminal, run:
 ```bash
-/c_to_yaml sample_output/output.h sample_input/output_new.yaml
+./c_to_yaml sample_input/output_new.yaml
 ```
 
 Finally, compare the two generated YAML files for differences:
@@ -85,3 +85,6 @@ diff sample_input/output.yaml sample_input/output_new.yaml
 ```
 
 We expect no differences between `output.yaml` and `output_new.yaml`.
+
+### Demo Result Screenshot 
+![Result Screenshot](./result_scrnsht.png)
