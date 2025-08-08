@@ -3,7 +3,8 @@
 #include "sample_output/fcvt.d.q.h"
 // #include "sample_output/output.h"
 
-void print_yaml(FILE *output_file) {
+void print_yaml(FILE *output_file)
+{
     fprintf(output_file, "$schema: \"%s\"\n", _SCHEMA);
     fprintf(output_file, "kind: \"%s\"\n", KIND);
     fprintf(output_file, "name: \"%s\"\n", NAME);
@@ -13,15 +14,18 @@ void print_yaml(FILE *output_file) {
     fprintf(output_file, "  - id: \"%s\"\n", DESCRIPTION_0_ID);
     fprintf(output_file, "    normative: %s\n", DESCRIPTION_0_NORMATIVE ? "true" : "false");
     fprintf(output_file, "    text: |\n");
-    
 
     const char *text = DESCRIPTION_0_TEXT;
-    fprintf(output_file, "      "); 
-    for (const char *p = text; *p; ++p) {
-        if (*p == '\\' && *(p + 1) == 'n') {
-            fprintf(output_file, "\n      ");  
+    fprintf(output_file, "      ");
+    for (const char *p = text; *p; ++p)
+    {
+        if (*p == '\\' && *(p + 1) == 'n')
+        {
+            fprintf(output_file, "\n      ");
             ++p;
-        } else {
+        }
+        else
+        {
             fputc(*p, output_file);
         }
     }
@@ -47,28 +51,35 @@ void print_yaml(FILE *output_file) {
     fprintf(output_file, "data_independent_timing: %s\n", DATA_INDEPENDENT_TIMING ? "true" : "false");
     fprintf(output_file, "operation(): |\n");
 
-    fprintf(output_file, "  ");  
+    fprintf(output_file, "  ");
     const char *operation = OPERATION__;
-    for (const char *p = operation; *p; ++p) {
-        if (*p == '\\' && *(p + 1) == 'n') {
+    for (const char *p = operation; *p; ++p)
+    {
+        if (*p == '\\' && *(p + 1) == 'n')
+        {
             fprintf(output_file, "\n  ");
             ++p;
-        } else {
+        }
+        else
+        {
             fputc(*p, output_file);
         }
     }
     fprintf(output_file, "\n");
 }
 
-int main(int argc, char *argv[]) {
-    if (argc != 2) {
+int main(int argc, char *argv[])
+{
+    if (argc != 2)
+    {
         fprintf(stderr, "Usage: %s <output file>\n", argv[0]);
         return EXIT_FAILURE;
     }
 
     const char *output_filename = argv[1];
     FILE *output_file = fopen(output_filename, "w");
-    if (!output_file) {
+    if (!output_file)
+    {
         perror("Failed to open output file");
         return EXIT_FAILURE;
     }
