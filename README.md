@@ -2,24 +2,24 @@
 ### Hsieh Yu Hsuan
 ## Overview
 
-This project implements a two-way code generation workflow involving YAML, Python and C:
+This project implements a code generation workflow with YAML, Python and C files:
 
 1. **Python Program**: Reads YAML files under designate folder, and converts the YAML data into a generated C header file. The output C header files are stored under designate output folder.
 
 2. **C Program**: Includes the generated C header file and emits the contents of the header as a YAML file.
 
-3. **Repeat Conversion with Generated YAML**: The Python program then reads the emitted YAML from step 2 as input and generates a new C header file.
+3. **Repeat Conversion with Generated YAML**: The same Python program then reads the emitted YAML from step 2 as input and generates a new C header file.
 
-4. **Stable YAML Emission**: The C program again reads this second generated header file and emits YAML. This time, the emitted YAML should exactly match the YAML input this time (from step 3).
+4. **Identical YAML Emission**: The C program again reads this second generated header file and emits YAML. This time, the emitted YAML should exactly match the YAML input this time (from step 3).
    
 ---
 
 ## Files in this project
-- yaml_to_c.py: Python script handling YAML → C header conversion.
-- emit_yaml.c: C program handling C header → YAML emission.
-- sample_input: folder to store original YAML file.
-- sample_output folder to store generated headers.
-- This README.md describing the process.
+- yaml_to_c.py: Python script handling YAML → C header conversion
+- emit_yaml.c: C program handling C header → YAML emission
+- sample_input: folder to store original YAML file
+- sample_output folder to store generated headers
+- This README.md describing the process
   
 ---
 
@@ -44,6 +44,8 @@ gcc -o c_to_yamlemit_yaml.c
 
 ## Demo
 
+In terminal, run: 
+
 ```bash
 python3 yaml_to_c.py sample_input sample_output
 ```
@@ -64,7 +66,7 @@ gcc -o c_to_yaml c_to_yaml.c
 
 - The resulting `output.yaml` file will be saved under the `sample_input/` folder.
 
-Next, generate another .yaml file by passing the previously generated output.yaml back through the Python script and C program:
+Next, generate another `.yaml` file by passing the previously generated `output.yaml` back through the Python script and C program:
 
 ```bash
 python3 yaml_to_c.py sample_input sample_output
